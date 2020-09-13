@@ -242,8 +242,45 @@ namespace CSharp.Assignments.Loop1
         /// <param name="number">Number.</param>
         public static bool IsHilly(int number)
         {
-            throw new NotImplementedException();
+            int current, temp, asc = 0, desc = 0, maxValue = 0;
+            current = number % 10;
+            number /= 10;
+            while (number > 0)
+            {
+                temp = number % 10;
+                if (temp > current && asc == 0)
+                {
+                    maxValue++;
+                }
+                else if (temp == current || temp < current && maxValue > 0)
+                {
+                    asc++;
+                    desc++;
+                    maxValue = 0;
+                }
+                else if (temp < current)
+                {
+                    asc++;
+                }
+                else
+                    break;
+                current = temp;
+                number /= 10;                           
+                              
+                               
+            }
+            if (number == 0 && desc==1 && asc > 0)
+            {
+                return true;    
+            }
+            else
+            {
+                return false;
+            }
+
+
         }
+       
 
         /// <summary>
         /// Given three ints, a b c, return true if one of b or c is "close" (differing from a by at most 1), while the other is "far", 
@@ -255,7 +292,17 @@ namespace CSharp.Assignments.Loop1
         /// <returns></returns>
         public static bool CloseFar(int a, int b, int c)
         {
-            throw new NotImplementedException();
+            if (Math.Abs(a - c) <= 1)
+            {
+                if (Math.Abs(a-b)>=2 && Math.Abs(b-c)>=2)
+                        return true;
+            }
+            else if (Math.Abs(a - b) <= 1)
+            {
+                if(Math.Abs(a-c)>=2 && Math.Abs(b-c)>=2)
+                        return true;
+            }
+            return false;
         }
     }
 }
