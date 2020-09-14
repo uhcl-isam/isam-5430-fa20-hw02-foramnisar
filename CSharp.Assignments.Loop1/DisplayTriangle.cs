@@ -5,7 +5,14 @@ using System.Text;
 namespace CSharp.Assignments.Loop1
 {
     /// <summary>
-    /// Write an app reads two inputs: a character that indicates which pattern to choose ('a' = lower left triangle, 'b' = upper left triangle, 'c' = upper right triangle, 'd' = lower right triangle) and an integer that indicates the number of lines to display. The app will then display the following patterns separately, one below the other. Use for loops to generate patterns. All asterisks (*) should be displayed by a signle statement of the form Console.Write('*'); which causes the asterisks to display side by side. A statement of the form Console.WriteLine(); can be used to move to the next line. A statement of the form COnsole.Write(' '); can be used to display a space for the last two patterns., There should be no other output statements in the app. [Hint: the last two patterns require that each line begin with an appropriate number of blank spaces.
+    /// Write an app reads two inputs: a character that indicates which pattern to 
+    /// choose ('a' = lower left triangle, 'b' = upper left triangle, 'c' = upper right triangle, 'd' = lower right triangle)
+    /// and an integer that indicates the number of lines to display. The app will then display the following patterns separately, 
+    /// one below the other. Use for loops to generate patterns. All asterisks (*) should be displayed by a signle statement 
+    /// of the form Console.Write('*'); which causes the asterisks to display side by side. A statement of the form 
+    /// Console.WriteLine(); can be used to move to the next line. A statement of the form COnsole.Write(' '); can be used to
+    /// display a space for the last two patterns., There should be no other output statements in the app. [Hint: the last 
+    /// two patterns require that each line begin with an appropriate number of blank spaces.
     /// </summary>
     /// <example>
     ///    (a)          (b)         (c)          (d)
@@ -30,7 +37,63 @@ namespace CSharp.Assignments.Loop1
             int n = Convert.ToInt32(Console.ReadLine());
 
             // Write your codes here.
-            Console.ReadLine();
+            int i, j;
+            switch (t)
+            {
+                case 'a':
+                    {
+                        for (i = 0; i < n; i++)
+                        {
+                            for (j=0; j <= i; j++)
+                            {
+                                Console.Write("*");
+                            }
+                            Console.WriteLine();
+                        }
+                        break;
+                    }
+                case 'b':
+                    {
+                        for (i = n; i > 0; i--)
+                        {
+                            for (j=0;j<i; j++)
+                            {
+                                Console.Write("*");
+                            }
+                            Console.WriteLine();
+                        }break;
+                    }
+                case 'c':
+                    {
+                        for (i = n; i > 0; i--) 
+                        {
+                            for (j = n; j >0; j--) 
+                            {
+                                if (i < j)
+                                    Console.Write(" ");
+                                else
+                                    Console.Write("*");
+                            }
+                            Console.WriteLine();
+                        }break;
+                    }
+                case 'd':
+                    {
+                        for (i = 1; i <= n; i++) 
+                        {
+                            for (j = n; j >0; j--) 
+                            {
+                                if (j <= i)
+                                    Console.Write("*");
+                                else
+                                    Console.Write(" ");
+
+                            }
+                            Console.WriteLine();
+                        }
+                        break;
+                    }
+            }
         }
     }
 }
